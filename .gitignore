@@ -1,0 +1,8 @@
+node_modules
+assets/*address.txt
+assets/tarot/**/*
+assets/json/**/*
+*.log
+#Hardhat files
+cache
+artifacts
