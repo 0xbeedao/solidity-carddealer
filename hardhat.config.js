@@ -1,3 +1,5 @@
+require('hardhat-deploy');
+require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-waffle");
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -18,5 +20,8 @@ task("accounts", "Prints the list of accounts", async () => {
  */
 module.exports = {
   solidity: "0.7.3",
+  namedAccounts: {
+    deployer: 0,
+  },
 };
 

@@ -1,15 +1,5 @@
 const fs = require('fs');
-const cards = require('./tarot.js');
-
-function getCID(key) {
-  const rawCid = fs.readFileSync(`./tarot_${key}_address.txt`);
-  return rawCid.toString().replace('\n', '');
-}
-
-const decks = {
-  rws: { title: 'Rider Waite Smith OG', suffix: '.png', cid: getCID('rws') },
-  tdb: {title: 'Tarot di Besançon', suffix: '.jpg', cid: getCID('tdb') }
-};
+const { decks, tarot } = require('./index');
 
 function writeJSON(key, card, ix) {
   const fname = `json/${key}/${ix}`;
@@ -18,7 +8,7 @@ function writeJSON(key, card, ix) {
   fs.writeFileSync(fname, JSON.stringify({
     title: card.title,
     series: deck.title,
-    creator: "DevBruce",
+    creator: "InvisibleCastle",
     image: `ipfs://${deck.cid}/${card.image}${deck.suffix}`,
     timestamp: new Date().toISOString()
   }));
@@ -27,5 +17,5 @@ function writeJSON(key, card, ix) {
 Object
   .keys(decks)
   .forEach((key) => {
-    cards.forEach((card, ix) => writeJSON(key, card, ix));
+    tarot.forEach((card, ix) => writeJSON(key, card, ix));
   });

@@ -32,16 +32,16 @@ contract TarotNFTDeck is Ownable, PseudoRandomized, ERC721 {
     /**
      * Fired on card draw
      * @param owner {address} owner of card
-     * @param uri {string} of card
+     * @param uri {string} of JSON for card
      * @param index {uint8} position of card in unshuffled deck. Ex: "0" for "The Fool"
      * @param draw {uint8} sequencial number of draw, e.g. "0" for first draw.
      */
     event Card(address owner, string uri, uint8 index, uint8 draw);
 
-    constructor(string memory baseURI, uint price)
+    constructor(string memory baseURI, uint price, string memory title, string memory symbol)
         PseudoRandomized()
         Ownable()
-        ERC721("RWS Tarot Collection v0.1", "TAROT")
+        ERC721(title, symbol)
     {
         _setBaseURI(baseURI);
         _drawPrice = price;

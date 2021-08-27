@@ -27,7 +27,7 @@ describe("TarotNFTDeck", function() {
   });
   
   beforeEach(async () => {
-    tarot = await TarotNFTDeck.deploy('test/', 0);
+    tarot = await TarotNFTDeck.deploy('test/', 0, "test", "TAROT");
     await tarot.deployed();
   });
   
